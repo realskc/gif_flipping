@@ -1,0 +1,40 @@
+# build output ---------------------------------------------------------------
+/build/
+/Makefile
+/CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake
+/compile_commands.json
+/Testing/
+*.dir/
+*.obj
+*.o
+*.exe
+*.dll
+*.lib
+*.pdb
+
+# CMake user-specific -------------------------------------------------------
+CMakeLists.txt.user
+CMakeLists.user
+*.cmake.user
+CMakeFiles-export.cmake
+
+# Visual Studio / VS Code ----------------------------------------------------
+.vscode/
+.vscode-test/
+*.vcxproj*
+*.sln
+*.suo
+*.user
+*.vcxproj.filters
+*.ncb
+*.opensdf
+*.sdf
+*.ipch
+*.log
+
+# other ----------------------------------------------------------------------
+old_try/
+.cache/
+data/

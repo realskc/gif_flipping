@@ -1,0 +1,48 @@
+Blocks can be classified into three groups : Control, Graphic-Rendering and Special Purpose.  Control blocks, such as the Header, the Logical Screen Descriptor, the Graphic Control Extension and the Trailer, contain information used to control the process of the Data Stream or information  used in setting hardware parameters.  Graphic-Rendering blocks such as the Image Descriptor and the Plain Text Extension contain information and data used to render a graphic on the display device. Special Purpose blocks such as the Comment Extension and the Application Extension are neither used to control the process of the Data Stream nor do they contain information or data used to render a graphic on the display device.
+
+Control
+	Header: 6 Bytes
+		This block is REQUIRED; exactly one Header must be present per Data Stream.
+		
+		Signature: 3 Bytes
+		Version: 3 Bytes
+	Logical Screen Descriptor: 7 Bytes
+		exactly one Logical Screen Descriptor must be present per Data Stream. This block must appear immediately after the Header.
+		
+		Logical Screen Width: 2 Bytes
+		Logical Screen Height: 2 Bytes
+		<Packed Fields>: 1 Byte
+			Global Color Table Flag       1 Bit
+			Color Resolution              3 Bits
+			Sort Flag                     1 Bit
+			Size of Global Color Table    3 Bits
+		Background Color Index: 1 Byte
+		Pixel Aspect Ratio: 1 Byte
+	Global Color Table: 3 × 2^(Size of Global Color Table+1)
+		Its presence is marked by the Global Color Table Flag being set to 1 in the Logical Screen Descriptor.
+		At most one Global Color Table may be present per Data Stream.
+
+Each image in the Data Stream is composed of an Image Descriptor, an optional Local Color Table, and the image data.
+
+Graphic-Rendering
+	Image Descriptor: 10 Bytes
+		Image Separator: 1 Byte
+		Image Left Position: 2 Bytes
+		Image Top Position: 2 Bytes
+		Image Width: 2 Bytes
+		Image Height: 2 Bytes
+		<Packed Fields>: 1 Byte
+			Local Color Table Flag        1 Bit
+			Interlace Flag                1 Bit
+			Sort Flag                     1 Bit
+			Reserved                      2 Bits
+			Size of Local Color Table     3 Bits
+	Local Color Table: 3x2^(Size of Local Color Table+1)
+		Its presence is marked by the Local Color Table Flag being set to 1 in the Image Descriptor.
+		At most one Local Color Table may be present per Image Descriptor and its scope is the single image associated with the Image Descriptor that precedes it.
+	Table Based Image Data
+		Pixel indices are in order of left to right and from top to bottom.
+		The sequence of indices is encoded using the LZW Algorithm with variable-length code, as described in Appendix F.
+		
+		LZW Minimum Code Size: 1 Byte
+			This byte determines the initial number of bits used for LZW codes in the image data.

@@ -1,0 +1,20 @@
+BasedOnStyle: LLVM
+
+IndentWidth: 4
+ColumnLimit: 100
+
+# if ( / for (
+SpaceAfterControlStatementKeyword: true
+
+# 允许单行 if（如 if (x) break;）
+AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
+
+# 使用 ) { 风格，但不强制 braces
+BreakBeforeBraces: Attach
+
+# include 排序
+SortIncludes: true
+
+# case 标签缩进
+IndentCaseLabels: true
