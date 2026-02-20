@@ -4,4 +4,4 @@
 
 #include "config.h"
 
-void dump_gif(FILE *file, const Config &config);
+void dump_gif(FILE *file, FILE *output_file, const Config &config);
