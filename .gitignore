@@ -35,6 +35,7 @@ CMakeFiles-export.cmake
 *.log
 
 # other ----------------------------------------------------------------------
-old_try/
-.cache/
-data/
+/old_try/
+/.cache/
+/data/
+/*.gif

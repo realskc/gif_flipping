@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(gifdump
     src/gifdump.cpp
     src/gif_parse.cpp
+    src/gif_reverse.cpp
 )
 target_compile_options(gifdump PRIVATE
     -Wall
@@ -16,4 +17,5 @@ target_compile_options(gifdump PRIVATE
     -Wimplicit-fallthrough
     -Wmisleading-indentation
     -Werror
+    -Wno-unused-parameter
 )
