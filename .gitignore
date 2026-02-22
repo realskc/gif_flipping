@@ -39,3 +39,4 @@ CMakeFiles-export.cmake
 /.cache/
 /data/
 /*.gif
+*.ini
